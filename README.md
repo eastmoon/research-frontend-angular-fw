@@ -40,7 +40,7 @@ Angular 前端框架基於 MVC 架構概念設計設計，對於單頁應用程�
         + 視圖元件的狀態，亦即 MVP 架構中的 Presenter
         + 基於 Angular 的元件與雙向綁定設計進行相應設計調整
 
-+ 視圖模塊
++ 視圖模塊 ( View )
     - 頁面 ( Page )
         + 基於 Angular 規範，複合數個圖層，以 HTML、CSS、JavaScript 組成的頁面藍圖
         + 頁面負責管理相關的圖層註冊
