@@ -9,7 +9,7 @@ elif [ "${1}" = "init" ]; then
 elif [ "${1}" = "web" ]; then
     npm run start -- --port ${PORT} --host 0.0.0.0 --disable-host-check --poll 500
 elif [ "${1}" = "sb" ]; then
-    npm run storybook -- --port ${PORT}
+    npm run storybook -- --port ${PORT} --host 0.0.0.0
 elif [ "${1}" = "mocha" ]; then
     npm run mocha
 elif [ "${1}" = "build" ]; then
