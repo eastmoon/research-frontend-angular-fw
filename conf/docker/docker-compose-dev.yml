@@ -1,0 +1,80 @@
+# Docker-Compose document
+# Ref : https://docs.docker.com/compose/compose-file/
+
+name: ${PROJECT_NAME}
+
+networks:
+  srv-network:
+    driver: bridge
+    name: ${INFRA_DOCKER_NETWORK}
+    external: true
+
+services:
+  web:
+    image: ${WEB_IMAGE_NAME}
+    container_name: ${WEB_CONTAINER_NAME}
+    hostname: web
+    stdin_open: true
+    tty: true
+    ports:
+      - ${WEB_PORT}:${WEB_PORT}
+    volumes:
+      - ${PROJECT_DIR}/app/web:/app
+      - ${PROJECT_DIR}/cache/develop/web/dist:/app/dist
+    environment:
+      - PORT=${WEB_PORT}
+    command: [ "${WEB_COMMAND}" ]
+    working_dir: /app
+    networks:
+      - srv-network
+
+  sb:
+    image: ${SB_IMAGE_NAME}
+    container_name: ${SB_CONTAINER_NAME}
+    hostname: sb
+    stdin_open: true
+    tty: true
+    ports:
+      - ${SB_PORT}:${SB_PORT}
+    volumes:
+      - ${PROJECT_DIR}/app/web:/app
+    environment:
+      - PORT=${SB_PORT}
+    command: [ "${SB_COMMAND}" ]
+    working_dir: /app
+    networks:
+      - srv-network
+
+  mocha:
+    image: ${MOCHA_IMAGE_NAME}
+    container_name: ${MOCHA_CONTAINER_NAME}
+    hostname: mocha
+    stdin_open: true
+    tty: true
+    ports:
+      - ${MOCHA_PORT}:${MOCHA_PORT}
+    volumes:
+      - ${PROJECT_DIR}/app/web:/app
+    environment:
+      - PORT=${MOCHA_PORT}
+    command: [ "${MOCHA_COMMAND}" ]
+    working_dir: /app
+    networks:
+      - srv-network
+
+  dummy:
+    image: ${DUMMY_IMAGE_NAME}
+    container_name: ${DUMMY_CONTAINER_NAME}
+    hostname: dummy
+    stdin_open: true
+    tty: true
+    ports:
+      - ${DUMMY_PORT}:${DUMMY_PORT}
+    volumes:
+      - ${PROJECT_DIR}/app/dummy:/app
+    environment:
+      - PORT=${DUMMY_PORT}
+    command: [ "${DUMMY_COMMAND}" ]
+    working_dir: /app
+    networks:
+      - srv-network

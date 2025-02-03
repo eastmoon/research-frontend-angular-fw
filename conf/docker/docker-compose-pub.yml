@@ -1,0 +1,16 @@
+# Docker-Compose document
+# Ref : https://docs.docker.com/compose/compose-file/
+
+name: ${PROJECT_NAME}
+
+services:
+  builder:
+    image: ${SRV_IMAGE_NAME}
+    container_name: ${SRV_CONTAINER_NAME}
+    hostname: ${SRV_HOSTNAME}
+    volumes:
+      - ${PROJECT_DIR}/app/web:/app
+      - ${PROJECT_DIR}/cache/publish:/app/dist
+    command: [ "${SRV_COMMAND}" ]
+    working_dir: /app
+    network_mode: host
