@@ -3,9 +3,7 @@
     "ts"
   ],
   "spec": "test/**/*.spec.ts",
-  "require": [
-    "tsx"
-  ],
+  "require": [ "tsx" ],
   "recursive": true,
   "watch": true,
   "watch-files": ["src/model/**/*.ts", "test/**/*.spec.ts"]
