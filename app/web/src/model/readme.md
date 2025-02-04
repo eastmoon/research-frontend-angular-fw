@@ -38,3 +38,24 @@ class Counter extends Proxy {}
 if (!MVC.model.has("Counter")) MVC.register(new Counter());
 export default MVC.model.retrieve("Counter");
 ```
+
+## 相依注入
+
+藉由 Angular 框架的相依注入服務，以此確保在應用程式根來看僅會有一個實體，並以此實體註冊至 MVC 框架。
+
+```js
+import { Injectable } from '@angular/core';
+
+// Declare class
+@Injectable({
+  providedIn: 'root'
+})
+export class APIService extends Service {}
+    constructor() {
+        super();
+        if (!MVC.model.has(this.name)) MVC.register(this);
+    }
+}
+```
+
+與主動註冊差別再，當使用 ```import``` 匯入時，預設沒有匯出 MVC 框架內的註冊實體，其原因在實體存在依賴 Angular 框架的宣告時間，這部分會因時間差將無法正確取得實體；因此，若要取回需讓 Angular 框架執行一次才可正確取得。
