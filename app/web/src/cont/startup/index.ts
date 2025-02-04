@@ -6,5 +6,5 @@ import { Progress } from "@/framework/pattern/facade/progress";
 class Startup extends Progress {}
 
 // Declare instance object
-if (!MVC.controller.has("Startup")) MVC.register(new Startup());
-export default MVC.controller.retrieve("Startup");
+if (!MVC.controller.has(Startup.name)) MVC.register(new Startup());
+export default MVC.controller.retrieve(Startup.name);
