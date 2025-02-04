@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-class APIService extends Service {}
+export class APIService extends Service {
     constructor() {
         super();
         if (!MVC.model.has(this.name)) MVC.register(this);
