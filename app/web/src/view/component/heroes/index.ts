@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '@/model/type/hero';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  templateUrl: './index.html',
+  styleUrls: ['./index.scss']
 })
 export class HeroesComponent {
   hero: Hero = {

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { APIService } from '@/model/service/api'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'page-root',
+  templateUrl: './index.html',
+  styleUrls: ['./index.scss']
 })
-export class AppComponent {
-  title = 'Tour of Heroes';
+export class PageComponent {
+  title = 'Angular PureMVC framework';
   constructor(private apis: APIService) {
       if (!!apis) apis.op("msg", "demo hero");
   }
