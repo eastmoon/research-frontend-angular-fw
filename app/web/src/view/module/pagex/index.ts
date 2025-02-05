@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HeaderComponent } from '@/view/module/Header';
-import type { User } from '@/model/user';
+import { HeaderComponent } from '@/view/module/header';
+import type { User } from '@/model/type/user';
 
 @Component({
   selector: 'storybook-page',
