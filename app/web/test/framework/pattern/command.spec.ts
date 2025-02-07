@@ -136,9 +136,30 @@ describe('Framework.Pattern.Command Tests', () => {
         c = new Macro("demo-macro-command");
         assert.equal(c.name, "demo-macro-command");
     });
+    it('Macro register command or command object', () => {
+        count = 0;
+        let m : Macro = new Macro();
+        let a : Args = { val : 1, str : "demo" };
+        let co : ICommand = {
+            name: "c2",
+            exec: ($args: any) : any => {
+                if ($args !== undefined && $args !== null) {
+                    $args.str = "c2";
+                }
+                return $args;
+            }
+        }
+        m.register("1", new c1());
+        m.register("2", co);
+        assert.equal(m.size, 2);
+        assert.equal(a.val, 1);
+        assert.equal(a.str, "demo");
+        m.exec(a);
+        assert.equal(a.val, 123);
+        assert.equal(a.str, "c2");
+    });
     it('Macro method execute with object parameter', () => {
-        assert.ok( 1 === 1);
-        let m : Macro = new Macro(null);
+        let m : Macro = new Macro();
         let a : Args = { val : 1, str : "demo" };
         m.register("1", new c1());
         m.register("2", new c2());
