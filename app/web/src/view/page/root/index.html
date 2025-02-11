@@ -1,4 +1,11 @@
 <h1>{{title}}</h1>
 <hr />
-<layer-foreground></layer-foreground>
-<layer-content></layer-content>
+<div *ngIf="!isShow">
+    <h2>Startup system...</h2>
+</div>
+<div *ngIf="isShow">
+    <layer-foreground></layer-foreground>
+    <layer-content-main></layer-content-main>
+    <layer-content-sub></layer-content-sub>
+    <layer-content-route></layer-content-route>
+</div>

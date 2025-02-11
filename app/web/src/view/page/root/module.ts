@@ -4,18 +4,23 @@ import { FormsModule } from '@angular/forms';
 
 import { PageComponent } from '.';
 import { ForgroundLayer } from '@/view/layer/foreground';
-import { ContentLayer } from '@/view/layer/content';
+import { MainContentLayer } from '@/view/layer/content/main';
+import { SubContentLayer } from '@/view/layer/content/sub';
+import { RouteContentLayer, RoutingModule } from '@/view/layer/content/route';
 
 
 @NgModule({
   declarations: [
     PageComponent,
     ForgroundLayer,
-    ContentLayer
+    MainContentLayer,
+    SubContentLayer,
+    RouteContentLayer
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [PageComponent]
