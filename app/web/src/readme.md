@@ -4,7 +4,7 @@
 
 ## 啟動 MVC 框架
 
-由於應用核心的設計，僅需要在應用程式的進入點檔案 ```main.tsx``` 宣告引用框架，並第一次執行 ```MVC.instance``` 即可產生實體，並且日後其他操作皆存取到該實體。
+由於應用核心的設計，僅需要在應用程式的進入點檔案 ```main.ts``` 宣告引用框架，並第一次執行 ```MVC.instance``` 即可產生實體，並且日後其他操作皆存取到該實體。
 
 ```js
 import MVC from "@/framework/pattern/facade/mvc";
@@ -13,14 +13,13 @@ console.log( MVC.instance );
 
 ## 註冊 MVC 元素
 
-藉由主動註冊，在各元素引入時，主動掛載入應用核心；因此，雖然範例在 ```main.tsx``` 執行時就主動註冊如下內容，但亦可讓服務在實際使用的介面生成時才註冊。
+藉由主動註冊，在各元素引入時，主動掛載入應用核心；因此，雖然範例在 ```main.ts``` 執行時就主動註冊如下內容，但亦可讓服務在實際使用的介面生成時才註冊。
 
 ```js
 // import MVC element. Element will auto register element to MVC application.
 import "@/cont/startup";
-import "@/cont/navigate";
-import "@/model/service/api";
 import "@/model/proxy/counter";
+import "@/model/service/lazy";
 ```
 
 ## 執行 MVC 操作

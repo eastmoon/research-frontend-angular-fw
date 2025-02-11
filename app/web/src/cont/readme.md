@@ -34,3 +34,23 @@ export default MVC.controller.retrieve("Startup");
 ```
 
 需要注意，倘若設計的控制器可被複數執行，則避免使用主動註冊，於需要時生成物件後執行。
+
+## 命令物件
+
+依據實作 Progress 的方式不同，實務上不見得所有過濾元件都有必要分離成一個 Filter 物件；因此，若無需分離，則應該使用 Progress 中的函數直接組成過濾器並註冊，此註冊物件可成為命令物件。
+
+```js
+class Startup extends Progress {
+    constructor() {
+        super();
+        let f1 = {name: "1", exec: this.filter1.bind(this)};
+        this.register(f1.name, f1);
+    }
+    filter1($args: any) {
+        console.log("Startup filter 1");
+        return $args;
+    }
+}
+```
+
+如上範例，當 Progress 生成時會將本生的行為函數 ```filter1``` 組成符合 ```ICommand``` 介面的物件 ```f1```，但需要注意，若未使用 ```bind``` 函數，則 Progress 執行到此函數時會因為該函數所在範圍問題導致無法使用 ```this```。
