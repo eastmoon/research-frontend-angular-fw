@@ -31,4 +31,4 @@ Angular 前端框架基於 MVC 架構概念設計設計，對於單頁應用程�
 
 基於 PrueMVC 架構概念配合 Angular 框架的擴展其 MVC 框架與規範，設計目的是考量 Angular 框架本質僅，在考量網頁的互動、結構、服務內容擴大到網頁應用程式，建議補充 MVC 框架作為輔助，將業務邏輯重新分門別類的管理。
 
-詳細說明參考[React 專案文件](./app/web/doc/framework-design.md)
+詳細說明參考[Angular 專案文件](./app/web/doc/framework-design.md)
