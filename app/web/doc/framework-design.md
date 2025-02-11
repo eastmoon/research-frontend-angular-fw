@@ -46,13 +46,13 @@
         + 狀態分類為模型，但設計詳細參考視圖說明
 
 + [視圖 ( View )](../src/view)
-    - [頁面 ( Page )](../src/view/page)
+    - 頁面 ( Page )
         + 基於 Angular 規範，複合數個圖層，以 HTML、CSS、JavaScript 組成的頁面藍圖
         + 頁面負責管理相關的圖層註冊
         + 頁面負責管理相關的代理啟動
         + 頁面負責管理相應的流程啟動
         + 應註冊至應用核心
-    - [圖層 ( Layer )](../src/view/layer)
+    - 圖層 ( Layer )
         + 基於 Angular 規範，以 HTML、CSS、JavaScript 組成座標框
         + 呈現內容是系統提供的模塊或元件
         + 應註冊至應用核心
