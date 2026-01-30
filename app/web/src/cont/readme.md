@@ -19,8 +19,8 @@
 控制器 ( Controller ) 可繼承命令樣式的命令 ( Command )、巨集 ( Macro )、非同步巨集 ( AsyncMacro ) 或進程架構的進程 ( Progress )、管線 ( Pipe )、過濾器 ( Filter )；若執行過程皆無非同步處理則可使用巨集 ( Macro )，反之則應使用進程 ( Progress )、管線 ( Pipe )。
 
 ```js
-import MVC from "@/framework/pattern/facade/mvc";
-import { Progress } from "@/framework/pattern/facade/progress";
+import MVC from "mvc-extended-framework";
+import { Progress } from "mvc-extended-framework";
 class Startup extends Progress {}
 ```
 

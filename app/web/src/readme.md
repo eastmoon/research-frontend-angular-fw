@@ -7,7 +7,7 @@
 由於應用核心的設計，僅需要在應用程式的進入點檔案 ```main.ts``` 宣告引用框架，並第一次執行 ```MVC.instance``` 即可產生實體，並且日後其他操作皆存取到該實體。
 
 ```js
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 console.log( MVC.instance );
 ```
 
@@ -28,7 +28,7 @@ import "@/model/service/lazy";
 
 ```js
 // import MVC framework
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 // Call event
 MVC.on("Content", "main", "onfocus");
 ```
@@ -37,7 +37,7 @@ MVC.on("Content", "main", "onfocus");
 
 ```js
 // import MVC framework
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 import Startup from "@/cont/startup";
 // Use MVC to execute command
 MVC.exec(Startup.name);

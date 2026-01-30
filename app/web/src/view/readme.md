@@ -18,8 +18,8 @@
 ## 繼承 MVC 框架
 
 ```js
-import MVC from "@/framework/pattern/facade/mvc";
-import { Mediator } from "@/framework/pattern/mediator";
+import MVC from "mvc-extended-framework";
+import { Mediator } from "mvc-extended-framework";
 if (!MVC.view.has("Content")) MVC.register(new Mediator("Content"));
 ```
 Mediator 本身具有對視圖廣播通知與指定視圖操作兩個功能，除非有撰寫行為進行操作的需要，否則並無需建立類別，直接生成物件後註冊即可。
@@ -51,7 +51,7 @@ export default instance;
 
 ```js
 // import store
-import { IMediator, Mediator } from "@/framework/pattern/mediator";
+import { IMediator, Mediator } from "mvc-extended-framework";
 // Attach function into mediator
 let mediator : IMediator | null = MVC.view.retrieve("Content");
 mediator.attachEvent("main", "display", this.display.bind(this));
@@ -65,7 +65,7 @@ ContentMediator.on("main", "onfocus");
 
 ```js
 // import MVC framework
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 // Call event
 MVC.on("Content", "main", "onfocus");
 ```

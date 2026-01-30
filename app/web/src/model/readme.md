@@ -25,8 +25,8 @@
 模型 ( Model ) 依據設計需要繼承相應的類別，服務繼承 ```Service```、代理繼承 ```Proxy```，但建議服務針對不同協議的操作先封裝，進而避免操作函數的重複行為撰寫，例如 HTTP 協議用 ```APIService``` 封裝執行 ajax 指令的程序。
 
 ```js
-import MVC from "@/framework/pattern/facade/mvc";
-import { Proxy } from "@/framework/pattern/proxy";
+import MVC from "mvc-extended-framework";
+import { Proxy } from "mvc-extended-framework";
 class Counter extends Proxy {}
 ```
 
