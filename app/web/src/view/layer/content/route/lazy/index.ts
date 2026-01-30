@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 
 @Component({
   selector: 'lazy',

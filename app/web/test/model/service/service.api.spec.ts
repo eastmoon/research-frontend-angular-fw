@@ -5,7 +5,7 @@ import { Observable, Observer } from 'rxjs';
 import { HttpClient, HttpBackend, HttpRequest, HttpHeaders, HttpResponse, HttpEvent } from '@angular/common/http';
 
 // Application framework Library
-import { APIService } from "@/framework/model/service/api";
+import { APIService } from "@/model/service/api";
 
 // Declared class or variable
 export class FakeHttpBackend implements HttpBackend {
@@ -28,10 +28,9 @@ export class FakeHttpBackend implements HttpBackend {
 }
 const httpClient = new HttpClient(new FakeHttpBackend());
 // Test case
-describe('Framework.Model.Service.API Tests', () => {
+describe('Model.Service.API Tests', () => {
     it('inject case', () => {
         let apiService : APIService = new APIService(httpClient);
-        console.log(apiService);
         assert.ok(1 === 1);
     });
 });

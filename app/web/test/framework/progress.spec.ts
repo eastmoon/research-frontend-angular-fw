@@ -2,10 +2,10 @@
 import { assert } from "chai";
 
 // Application framework Library
-import { TPipeBlueprintOptions, TPipeBlueprint, IFilter, IPipe, IPipeController, IProgressNotify, Filter, Pipe, Progress } from "@/framework/pattern/facade/progress";
-import { ICommand } from "@/framework/pattern/command";
-import { Container } from "@/framework/pattern/facade/container";
-import { IPublisher } from "@/framework/pattern/observer";
+import { TPipeBlueprintOptions, TPipeBlueprint, IFilter, IPipe, IPipeController, IProgressNotify, Filter, Pipe, Progress } from "mvc-extended-framework";
+import { ICommand } from "mvc-extended-framework";
+import { Container } from "mvc-extended-framework";
+import { IPublisher } from "mvc-extended-framework";
 
 // Declared variable
 let count : number = 0;

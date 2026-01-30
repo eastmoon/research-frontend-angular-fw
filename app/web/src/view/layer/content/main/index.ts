@@ -1,7 +1,6 @@
 // Import Libraries
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import MVC from "@/framework/pattern/facade/mvc";
-import { IMediator, Mediator } from "@/framework/pattern/mediator";
+import MVC, { IMediator, Mediator } from "mvc-extended-framework";
 
 @Component({
   selector: 'layer-content-main',

@@ -1,6 +1,5 @@
 // Import Libraries
-import MVC from "@/framework/pattern/facade/mvc";
-import { Progress } from "@/framework/pattern/facade/progress";
+import MVC, { Progress } from "mvc-extended-framework";
 
 // Declare function
 function timeout(ms : number) : Promise<number> {

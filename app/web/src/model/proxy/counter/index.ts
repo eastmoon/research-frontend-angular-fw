@@ -1,6 +1,5 @@
 // Import Libraries
-import MVC from "@/framework/pattern/facade/mvc";
-import { Proxy } from "@/framework/pattern/proxy";
+import MVC, { Proxy } from "mvc-extended-framework";
 
 // Declare class
 export class Counter extends Proxy {}

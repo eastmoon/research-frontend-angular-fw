@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import MVC from "@/framework/pattern/facade/mvc";
+import MVC from "mvc-extended-framework";
 
 @Injectable({
   providedIn: 'root'

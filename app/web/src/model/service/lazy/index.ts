@@ -1,5 +1,4 @@
-import MVC from "@/framework/pattern/facade/mvc";
-import { Service } from "@/framework/pattern/proxy";
+import MVC, { Service } from "mvc-extended-framework";
 
 class LazyComponentLoader extends Service {
     items : { [key : string] : any } = {

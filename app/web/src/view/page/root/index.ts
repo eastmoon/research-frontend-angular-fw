@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { APIService } from '@/model/service/api';
-import MVC from "@/framework/pattern/facade/mvc";
+import { EchoService } from '@/model/service/echo';
+import MVC from "mvc-extended-framework";
 import { PageComponentStore } from './store';
 
 @Component({
@@ -13,8 +13,8 @@ export class PageComponent {
   isShow = false;
   title = 'Angular PureMVC framework';
   // Declare class constructor
-  constructor(private apis: APIService, private store: PageComponentStore) {
-      if (!!apis) apis.op("msg", "demo hero");
+  constructor(private echo: EchoService, private store: PageComponentStore) {
+      if (!!echo) echo.op("msg", "demo hero");
       let p : any = MVC.controller.retrieve("Startup");
       if ( !!p ) {
           p.attach("onComplete", this.startupComplete.bind(this));

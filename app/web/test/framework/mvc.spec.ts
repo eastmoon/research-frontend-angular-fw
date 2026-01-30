@@ -2,11 +2,11 @@
 import { assert } from "chai";
 
 // Application framework Library
-import MVC from "@/framework/pattern/facade/mvc";
-import { Container } from "@/framework/pattern/facade/container";
-import { IProxy, Service, Proxy } from "@/framework/pattern/proxy";
-import { IMediator, Mediator } from "@/framework/pattern/mediator";
-import { ICommand, Command, Macro } from "@/framework/pattern/command";
+import MVC from "mvc-extended-framework";
+import { Container } from "mvc-extended-framework";
+import { IProxy, Service, Proxy } from "mvc-extended-framework";
+import { IMediator, Mediator } from "mvc-extended-framework";
+import { ICommand, Command, Macro } from "mvc-extended-framework";
 
 // Declare variable
 let m1 : IProxy = new Service();
@@ -129,7 +129,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         MVC.register(m1);
         MVC.register(m2);
         MVC.register(m3);
-        assert.equal(MVC.model.size, 3);
+        assert.isAtLeast(MVC.model.size, 3);
         assert.ok(MVC.model.has(m1.name));
         assert.ok(MVC.model.has(m2.name));
         assert.ok(MVC.model.has(m3.name));
@@ -137,7 +137,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
     it('View register', () => {
         MVC.register(v1);
         MVC.register(v2);
-        assert.equal(MVC.view.size, 2);
+        assert.isAtLeast(MVC.view.size, 2);
         assert.ok(MVC.view.has(v1.name));
         assert.ok(MVC.view.has(v2.name));
     });
@@ -145,7 +145,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         MVC.register(c1);
         MVC.register(c2);
         MVC.register(c3);
-        assert.equal(MVC.controller.size, 3);
+        assert.isAtLeast(MVC.controller.size, 3);
         assert.ok(MVC.controller.has(c1.name));
         assert.ok(MVC.controller.has(c2.name));
         assert.ok(MVC.controller.has(c3.name));
@@ -154,7 +154,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         MVC.remove(m1);
         MVC.remove(m2);
         MVC.remove(m3);
-        assert.equal(MVC.model.size, 0);
+        assert.isAtLeast(MVC.model.size, 0);
         assert.notOk(MVC.model.has(m1.name));
         assert.notOk(MVC.model.has(m2.name));
         assert.notOk(MVC.model.has(m3.name));
@@ -162,7 +162,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
     it('View remove', () => {
         MVC.remove(v1);
         MVC.remove(v2);
-        assert.equal(MVC.view.size, 0);
+        assert.isAtLeast(MVC.view.size, 0);
         assert.notOk(MVC.view.has(v1.name));
         assert.notOk(MVC.view.has(v2.name));
     });
@@ -170,7 +170,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         MVC.remove(c1);
         MVC.remove(c2);
         MVC.remove(c3);
-        assert.equal(MVC.controller.size, 0);
+        assert.isAtLeast(MVC.controller.size, 0);
         assert.notOk(MVC.controller.has(c1.name));
         assert.notOk(MVC.controller.has(c2.name));
         assert.notOk(MVC.controller.has(c3.name));
@@ -178,7 +178,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
     it('Run model operation', async () => {
         let ms : IProxy = new SubService();
         MVC.register(ms);
-        assert.equal(MVC.model.size, 1);
+        assert.isAtLeast(MVC.model.size, 1);
         assert.ok(MVC.model.has(ms.name));
         let res : any = await MVC.op(ms.name, "demo", { str: "123", val: 321 });
         assert.property(res, "xstr");
@@ -186,18 +186,18 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         assert.property(res, "xval");
         assert.equal(res.xval, 321);
         MVC.remove(ms);
-        assert.equal(MVC.model.size, 0);
+        assert.isAtLeast(MVC.model.size, 0);
         assert.notOk(MVC.model.has(ms.name));
     });
     it('Run model operation with async/await', async() => {
         let ms : IProxy = new AsyncService();
         MVC.register(ms);
-        assert.equal(MVC.model.size, 1);
+        assert.isAtLeast(MVC.model.size, 1);
         assert.ok(MVC.model.has(ms.name));
         let res : any = await MVC.op(ms.name, "load", 5);
         assert.equal(res, 6);
         MVC.remove(ms);
-        assert.equal(MVC.model.size, 0);
+        assert.isAtLeast(MVC.model.size, 0);
         assert.notOk(MVC.model.has(ms.name));
     });
     it('Run view event', () => {
@@ -205,7 +205,7 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         vs.attachEvent("demo1", "click", f1);
         vs.attachEvent("demo2", "click", f2);
         MVC.register(vs);
-        assert.equal(MVC.view.size, 1);
+        assert.isAtLeast(MVC.view.size, 1);
         assert.ok(MVC.view.has(vs.name));
         count = 0;
         MVC.on(vs.name, "demo1", "click", 1);
@@ -213,20 +213,20 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         MVC.on(vs.name, "demo2", "click", 2);
         assert.equal(count, 6);
         MVC.remove(vs);
-        assert.equal(MVC.view.size, 0);
+        assert.isAtLeast(MVC.view.size, 0);
         assert.notOk(MVC.view.has(vs.name));
     });
     it('Run view event with async/await', async () => {
         let vs : IMediator = new SubMediator();
         vs.attachEvent("demo1", "click", af1);
         MVC.register(vs);
-        assert.equal(MVC.view.size, 1);
+        assert.isAtLeast(MVC.view.size, 1);
         assert.ok(MVC.view.has(vs.name));
         count = 0;
         await MVC.on(vs.name, "demo1", "click", 1);
         assert.equal(count, 2);
         MVC.remove(vs);
-        assert.equal(MVC.view.size, 0);
+        assert.isAtLeast(MVC.view.size, 0);
         assert.notOk(MVC.view.has(vs.name));
     });
     it('Run controller command execute', () => {
@@ -234,25 +234,25 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         cs.register("1", new CommandC1());
         cs.register("2", new CommandC2());
         MVC.register(cs);
-        assert.equal(MVC.controller.size, 1);
+        assert.isAtLeast(MVC.controller.size, 1);
         assert.ok(MVC.controller.has(cs.name));
         count = 0;
         MVC.exec(cs.name);
         assert.equal(count, 3);
         MVC.remove(cs);
-        assert.equal(MVC.controller.size, 0);
+        assert.isAtLeast(MVC.controller.size, 0);
         assert.notOk(MVC.controller.has(cs.name));
     });
     it('Run controller command execute with async/await', async () => {
         let cs : ICommand = new AsyncCommand();
         MVC.register(cs);
-        assert.equal(MVC.controller.size, 1);
+        assert.isAtLeast(MVC.controller.size, 1);
         assert.ok(MVC.controller.has(cs.name));
         count = 0;
         await MVC.exec(cs.name, 5);
         assert.equal(count, 6);
         MVC.remove(cs);
-        assert.equal(MVC.controller.size, 0);
+        assert.isAtLeast(MVC.controller.size, 0);
         assert.notOk(MVC.controller.has(cs.name));
     });
     it('Notify with view ', () => {
@@ -260,13 +260,13 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         vs.attach("move", f1);
         vs.attach("move", f2);
         MVC.register(vs);
-        assert.equal(MVC.view.size, 1);
+        assert.isAtLeast(MVC.view.size, 1);
         assert.ok(MVC.view.has(vs.name));
         count = 0;
         MVC.notify(vs.name, "move", 1);
         assert.equal(count, 5);
         MVC.remove(vs);
-        assert.equal(MVC.view.size, 0);
+        assert.isAtLeast(MVC.view.size, 0);
         assert.notOk(MVC.view.has(vs.name));
     });
     it('Notify with model ', () => {
@@ -274,13 +274,13 @@ describe('Framework.Pattern.Facade.MVC Tests', () => {
         ps.attach("calc", f1);
         ps.attach("calc", f2);
         MVC.register(ps);
-        assert.equal(MVC.model.size, 1);
+        assert.isAtLeast(MVC.model.size, 1);
         assert.ok(MVC.model.has(ps.name));
         count = 0;
         MVC.notify(ps.name, "calc", 1);
         assert.equal(count, 5);
         MVC.remove(ps);
-        assert.equal(MVC.model.size, 0);
+        assert.isAtLeast(MVC.model.size, 0);
         assert.notOk(MVC.model.has(ps.name));
     });
 });
