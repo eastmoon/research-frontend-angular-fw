@@ -1,25 +1,6 @@
 # 框架設計
 
-框架設計會包括兩個主要架構設計：
-
-+ [Model View Controller](https://www.geeksforgeeks.org/mvc-design-pattern/)
-+ [Pipe and Filter](https://www.geeksforgeeks.org/pipe-and-filter-architecture-system-design/)
-
-此兩個架構設計概念，會基於 [GoF Design Pattern](https://en.wikipedia.org/wiki/Design_Patterns) 一書所述的設計樣式實踐成框架。
-
-## 設計樣式
-
-下列為本專案完成的設計樣式
-
-+ Facade
-    - [Model View Controller](../src/framework/pattern/facade/mvc)、[testcase](../test/framework/pattern/facade-mvc.spec.ts)
-    - [Progress ( Pipe & Filter )](../src/framework/pattern/facade/progress)、[testcase](../test/framework/pattern/facade-progress.spec.ts)
-    - [Container](../src/framework/pattern/facade/container)、[testcase](../test/framework/pattern/facade-container.spec.ts)
-+ [Singleton](../src/framework/pattern/singleton)、[testcase](../test/framework/pattern/singleton.spec.ts)
-+ [Observer](../src/framework/pattern/observer)、[testcase](../test/framework/pattern/observer.spec.ts)
-+ [Command](../src/framework/pattern/command)、[testcase](../test/framework/pattern/command.spec.ts)
-+ [Mediator](../src/framework/pattern/mediator)、[testcase](../test/framework/pattern/mediator.spec.ts)
-+ [Proxy](../src/framework/pattern/proxy)、[testcase](../test/framework/pattern/proxy.spec.ts)
+MVC 擴展框架設計概念與規範詳細參考 [mvc-extended-framework](https://github.com/eastmoon/mvc-extended-framework) 專案。
 
 ## PureMVC 框架實用規劃
 
